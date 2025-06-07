@@ -80,6 +80,17 @@ void Calculator::setDigit(int digit) {
     m_currentInput.append(QString::number(digit));
 }
 
+// Function to append a decimal point to the current input if not already present
+void Calculator::setDecimalPoint() {
+    if (!m_currentInput.contains('.')) {
+        if (m_currentInput.isEmpty()) {
+            m_currentInput.append("0.");
+        } else {
+            m_currentInput.append('.');
+        }
+    }
+}
+
 // Function to set the addition operator and store the first operand
 void Calculator::setOperatorAdd() {
     setFirstOperand(m_currentInput.toDouble());
