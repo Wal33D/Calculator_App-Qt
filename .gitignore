@@ -17,3 +17,7 @@ ui_*.h
 *.user
 *.qrc
 *.rcc
+
+# Application binaries
+calculator
+calculator_test
