@@ -41,16 +41,25 @@ void test() {
         handleError("Division test failed.");
     }
 
-    // Test division by zero
+    // Test division by zero and recovery
     calc.setFirstOperand(20);
     calc.setSecondOperand(0);
     calc.setOperator('/');
     try {
         result = calc.calculateResult();
+        handleError("Division by zero test failed.");
     } catch (const std::logic_error& e) {
         handleError("Division by zero test passed: " + QString::fromStdString(e.what()));
     } catch (...) {
         handleError("Division by zero test failed.");
+    }
+    calc.clear();
+    calc.setFirstOperand(1);
+    calc.setSecondOperand(1);
+    calc.setOperator('+');
+    result = calc.calculateResult();
+    if (result != 2) {
+        handleError("Calculator not cleared after division by zero.");
     }
 
     qDebug() << "All tests passed.";
