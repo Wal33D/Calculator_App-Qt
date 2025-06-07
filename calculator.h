@@ -34,6 +34,7 @@ public:
 public slots:
     // Slot functions for handling user input
     void setDigit(int digit);
+    void setDecimalPoint();
     void setOperatorAdd();
     void setOperatorSubtract();
     void setOperatorMultiply();

@@ -53,8 +53,10 @@ int main(int argc, char *argv[]) {
 
     // Create clear and calculate buttons
     QPushButton *buttonClear = new QPushButton("C");
+    QPushButton *buttonDecimal = new QPushButton(".");
     QPushButton *buttonCalculate = new QPushButton("=");
-    buttonLayout.addWidget(buttonClear, 4, 0);
+    buttonLayout.addWidget(buttonClear, 0, 1);
+    buttonLayout.addWidget(buttonDecimal, 4, 0);
     buttonLayout.addWidget(buttonCalculate, 4, 2);
 
     // Add layouts to the main layout
@@ -66,6 +68,7 @@ int main(int argc, char *argv[]) {
         QPushButton *digitButton = buttonLayout.findChild<QPushButton *>(QString("button%1").arg(i));
         QObject::connect(digitButton, &QPushButton::clicked, &myCalculator, [&, i] { myCalculator.setDigit(i); });
     }
+    QObject::connect(buttonDecimal, &QPushButton::clicked, &myCalculator, &Calculator::setDecimalPoint);
 
     QObject::connect(buttonAdd, &QPushButton::clicked, &myCalculator, &Calculator::setOperatorAdd);
     QObject::connect(buttonSubtract, &QPushButton::clicked, &myCalculator, &Calculator::setOperatorSubtract);
@@ -79,6 +82,7 @@ int main(int argc, char *argv[]) {
         QPushButton *digitButton = buttonLayout.findChild<QPushButton *>(QString("button%1").arg(i));
         QObject::connect(digitButton, &QPushButton::clicked, updateDisplayLambda);
     }
+    QObject::connect(buttonDecimal, &QPushButton::clicked, updateDisplayLambda);
 
     QObject::connect(buttonAdd, &QPushButton::clicked, updateDisplayLambda);
     QObject::connect(buttonSubtract, &QPushButton::clicked, updateDisplayLambda);

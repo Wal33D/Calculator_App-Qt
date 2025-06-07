@@ -11,6 +11,7 @@ private slots:
     void division();
     void divisionByZero();
     void clearAfterError();
+    void decimalAddition();
 };
 
 void CalculatorTest::addition()
@@ -74,6 +75,15 @@ void CalculatorTest::clearAfterError()
     calc.setSecondOperand(1);
     calc.setOperator('+');
     QCOMPARE(calc.calculateResult(), 2.0);
+}
+
+void CalculatorTest::decimalAddition()
+{
+    Calculator calc;
+    calc.setFirstOperand(2.5);
+    calc.setSecondOperand(0.5);
+    calc.setOperator('+');
+    QCOMPARE(calc.calculateResult(), 3.0);
 }
 
 QTEST_MAIN(CalculatorTest)
