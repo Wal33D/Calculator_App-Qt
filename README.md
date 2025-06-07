@@ -20,3 +20,7 @@ A straightforward calculator application written in C++ that leverages the Qt li
 git clone https://github.com/your_username/simple-qt-calculator.git
 cd simple-qt-calculator
 ```
+
+## License
+
+This project is licensed under the [MIT License](LICENSE).
