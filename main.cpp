@@ -8,6 +8,7 @@
 #include <QtWidgets/QGridLayout>
 #include <QtWidgets/QStatusBar>
 #include <QtCore/QDebug>
+#include <stdexcept>
 
 // Function to handle errors by printing the error message to the debug output
 void handleError(QString message) {
@@ -91,8 +92,12 @@ int main(int argc, char *argv[]) {
     // Handle the equal button
     QObject::connect(buttonCalculate, &QPushButton::clicked, [&]() {
         myCalculator.setSecondOperand(myCalculator.getCurrentInput().toDouble());
-        double result = myCalculator.calculateResult();
-        inputDisplay.setText(QString::number(result));
+        try {
+            double result = myCalculator.calculateResult();
+            inputDisplay.setText(QString::number(result));
+        } catch (const std::logic_error &e) {
+            handleError(QString::fromStdString(e.what()));
+        }
         myCalculator.clear();
     });
 
