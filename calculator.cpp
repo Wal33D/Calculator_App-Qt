@@ -26,6 +26,9 @@ double Calculator::divide(double x, double y) {
     return x / y;
 }
 
+// Function to raise x to the power of y
+double Calculator::power(double base, double exponent) { return std::pow(base, exponent); }
+
 // Function to get the modulo of two numbers
 double Calculator::modulo(double x, double y) {
     if (y == 0) {
@@ -47,6 +50,8 @@ double Calculator::calculateResult() {
         return divide(m_firstOperand, m_secondOperand);
     case '%':
         return modulo(m_firstOperand, m_secondOperand);
+    case '^':
+        return power(m_firstOperand, m_secondOperand);
     default:
         return 0;
     }
@@ -118,5 +123,12 @@ void Calculator::setOperatorDivide() {
 void Calculator::setOperatorModulo() {
     setFirstOperand(m_currentInput.toDouble());
     setOperator('%');
+    m_currentInput.clear();
+}
+
+// Function to set the power operator and store the first operand
+void Calculator::setOperatorPower() {
+    setFirstOperand(m_currentInput.toDouble());
+    setOperator('^');
     m_currentInput.clear();
 }

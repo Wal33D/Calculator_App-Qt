@@ -9,6 +9,7 @@ A simple calculator application built with **C++** and **Qt Widgets**. It provid
 - Clear and equals buttons
 - Error handling for invalid operations such as division by zero
 - Modulo operator (`%`)
+- Exponentiation operator (`^`)
 
 ## Requirements
 

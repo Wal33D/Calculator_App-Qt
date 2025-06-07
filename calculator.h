@@ -17,6 +17,7 @@ class Calculator : public QObject {
     double multiply(double x, double y);
     double divide(double x, double y);
     double modulo(double x, double y);
+    double power(double base, double exponent);
 
     // Calculates the result based on the operator and operands
     double calculateResult();
@@ -41,6 +42,7 @@ class Calculator : public QObject {
     void setOperatorMultiply();
     void setOperatorDivide();
     void setOperatorModulo();
+    void setOperatorPower();
 
   private:
     // Member variables to store operands, operator, and current input
