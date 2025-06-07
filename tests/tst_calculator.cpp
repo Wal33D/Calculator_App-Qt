@@ -1,10 +1,9 @@
-#include <QtTest/QtTest>
 #include "calculator.h"
+#include <QtTest/QtTest>
 
-class CalculatorTest : public QObject
-{
+class CalculatorTest : public QObject {
     Q_OBJECT
-private slots:
+  private slots:
     void addition();
     void subtraction();
     void multiplication();
@@ -12,10 +11,11 @@ private slots:
     void divisionByZero();
     void clearAfterError();
     void decimalAddition();
+    void additionWithNegativeOperand();
+    void sequentialOperations();
 };
 
-void CalculatorTest::addition()
-{
+void CalculatorTest::addition() {
     Calculator calc;
     calc.setFirstOperand(3);
     calc.setSecondOperand(5);
@@ -23,8 +23,7 @@ void CalculatorTest::addition()
     QCOMPARE(calc.calculateResult(), 8.0);
 }
 
-void CalculatorTest::subtraction()
-{
+void CalculatorTest::subtraction() {
     Calculator calc;
     calc.setFirstOperand(10);
     calc.setSecondOperand(4);
@@ -32,8 +31,7 @@ void CalculatorTest::subtraction()
     QCOMPARE(calc.calculateResult(), 6.0);
 }
 
-void CalculatorTest::multiplication()
-{
+void CalculatorTest::multiplication() {
     Calculator calc;
     calc.setFirstOperand(3);
     calc.setSecondOperand(7);
@@ -41,8 +39,7 @@ void CalculatorTest::multiplication()
     QCOMPARE(calc.calculateResult(), 21.0);
 }
 
-void CalculatorTest::division()
-{
+void CalculatorTest::division() {
     Calculator calc;
     calc.setFirstOperand(20);
     calc.setSecondOperand(4);
@@ -50,8 +47,7 @@ void CalculatorTest::division()
     QCOMPARE(calc.calculateResult(), 5.0);
 }
 
-void CalculatorTest::divisionByZero()
-{
+void CalculatorTest::divisionByZero() {
     Calculator calc;
     calc.setFirstOperand(20);
     calc.setSecondOperand(0);
@@ -59,8 +55,7 @@ void CalculatorTest::divisionByZero()
     QVERIFY_EXCEPTION_THROWN(calc.calculateResult(), std::logic_error);
 }
 
-void CalculatorTest::clearAfterError()
-{
+void CalculatorTest::clearAfterError() {
     Calculator calc;
     calc.setFirstOperand(20);
     calc.setSecondOperand(0);
@@ -77,13 +72,33 @@ void CalculatorTest::clearAfterError()
     QCOMPARE(calc.calculateResult(), 2.0);
 }
 
-void CalculatorTest::decimalAddition()
-{
+void CalculatorTest::decimalAddition() {
     Calculator calc;
     calc.setFirstOperand(2.5);
     calc.setSecondOperand(0.5);
     calc.setOperator('+');
     QCOMPARE(calc.calculateResult(), 3.0);
+}
+
+void CalculatorTest::additionWithNegativeOperand() {
+    Calculator calc;
+    calc.setFirstOperand(3);
+    calc.setSecondOperand(-5);
+    calc.setOperator('+');
+    QCOMPARE(calc.calculateResult(), -2.0);
+}
+
+void CalculatorTest::sequentialOperations() {
+    Calculator calc;
+    calc.setFirstOperand(2);
+    calc.setSecondOperand(3);
+    calc.setOperator('+');
+    double result = calc.calculateResult();
+
+    calc.setFirstOperand(result);
+    calc.setSecondOperand(4);
+    calc.setOperator('*');
+    QCOMPARE(calc.calculateResult(), 20.0);
 }
 
 QTEST_MAIN(CalculatorTest)
