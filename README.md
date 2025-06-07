@@ -38,6 +38,16 @@ qmake tests.pro
 make
 make check    # or run ./calculator_test manually
 ```
+
+### Code Style
+
+The project defines its formatting rules in a `.clang-format` file. Run
+
+```bash
+clang-format -i <file>
+```
+
+on source files before committing changes to ensure a consistent style.
 ## License
 
 This project is licensed under the [MIT License](LICENSE).
