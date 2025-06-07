@@ -17,12 +17,10 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
         main.cpp \
-        calculator.cpp \
-        test.cpp
+        calculator.cpp
 
 HEADERS += \
-        calculator.h \
-        test.h
+        calculator.h
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

@@ -1,5 +1,4 @@
 #include "calculator.h"
-#include "test.h"
 
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QPushButton>
@@ -23,7 +22,6 @@ void updateDisplay(QLineEdit &inputDisplay, const Calculator &myCalculator) {
 int main(int argc, char *argv[]) {
     QApplication app(argc, argv);
 
-    test(); // Run tests
 
     Calculator myCalculator;
     QWidget mainWindow;
