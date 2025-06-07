@@ -38,3 +38,19 @@ qmake tests.pro
 make
 make check    # or run ./calculator_test manually
 ```
+## License
+
+This project is licensed under the [MIT License](LICENSE).
+
+
+2. Generate the Makefile using `qmake` and build the project:
+```bash
+qmake calculator.pro
+make
+```
+3. Run the calculator:
+```bash
+./calculator
+```
+The application executes a set of simple tests defined in `test.cpp` when it starts.
+The results are printed to the console before the GUI appears.
