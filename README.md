@@ -20,3 +20,21 @@ A straightforward calculator application written in C++ that leverages the Qt li
 git clone https://github.com/your_username/simple-qt-calculator.git
 cd simple-qt-calculator
 ```
+
+2. Build the application:
+```bash
+qmake calculator.pro
+make
+```
+
+3. Run the application binary produced by `make`.
+
+### Running the Tests
+
+The project includes a Qt Test suite. To build and execute the tests run:
+
+```bash
+qmake tests.pro
+make
+make check    # or run ./calculator_test manually
+```
