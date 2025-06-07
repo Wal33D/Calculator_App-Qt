@@ -5,13 +5,12 @@
 #include <QtWidgets/QLineEdit>
 #include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QGridLayout>
-#include <QtWidgets/QStatusBar>
-#include <QtCore/QDebug>
+#include <QtWidgets/QMessageBox>
 #include <stdexcept>
 
-// Function to handle errors by printing the error message to the debug output
-void handleError(QString message) {
-    qDebug() << message;
+// Function to handle errors by displaying a message box
+void handleError(const QString &message, QWidget *parent = nullptr) {
+    QMessageBox::critical(parent, "Error", message);
 }
 
 // Function to update the display of the calculator with the current input
@@ -28,7 +27,6 @@ int main(int argc, char *argv[]) {
     QVBoxLayout mainLayout;
     QLineEdit inputDisplay;
     QGridLayout buttonLayout;
-    QStatusBar statusBar;
 
     // Create digit buttons
     for (int i = 0; i <= 9; ++i) {
@@ -94,7 +92,7 @@ int main(int argc, char *argv[]) {
             double result = myCalculator.calculateResult();
             inputDisplay.setText(QString::number(result));
         } catch (const std::logic_error &e) {
-            handleError(QString::fromStdString(e.what()));
+            handleError(QString::fromStdString(e.what()), &mainWindow);
         }
         myCalculator.clear();
     });
