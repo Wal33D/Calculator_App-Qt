@@ -11,6 +11,7 @@ class CalculatorTest : public QObject {
     void divisionByZero();
     void clearAfterError();
     void modulo();
+    void power();
     void decimalAddition();
     void additionWithNegativeOperand();
     void sequentialOperations();
@@ -62,6 +63,14 @@ void CalculatorTest::modulo() {
     calc.setSecondOperand(3);
     calc.setOperator('%');
     QCOMPARE(calc.calculateResult(), 2.0);
+}
+
+void CalculatorTest::power() {
+    Calculator calc;
+    calc.setFirstOperand(2);
+    calc.setSecondOperand(3);
+    calc.setOperator('^');
+    QCOMPARE(calc.calculateResult(), 8.0);
 }
 
 void CalculatorTest::clearAfterError() {

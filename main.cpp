@@ -44,11 +44,13 @@ int main(int argc, char *argv[]) {
     QPushButton *buttonMultiply = new QPushButton("*");
     QPushButton *buttonDivide = new QPushButton("/");
     QPushButton *buttonModulo = new QPushButton("%");
+    QPushButton *buttonPower = new QPushButton("^");
     buttonLayout->addWidget(buttonAdd, 1, 3);
     buttonLayout->addWidget(buttonSubtract, 2, 3);
     buttonLayout->addWidget(buttonMultiply, 3, 3);
     buttonLayout->addWidget(buttonDivide, 4, 3);
     buttonLayout->addWidget(buttonModulo, 0, 0);
+    buttonLayout->addWidget(buttonPower, 0, 2);
 
     // Create clear and calculate buttons
     QPushButton *buttonClear = new QPushButton("C");
@@ -74,6 +76,7 @@ int main(int argc, char *argv[]) {
     QObject::connect(buttonMultiply, &QPushButton::clicked, &myCalculator, &Calculator::setOperatorMultiply);
     QObject::connect(buttonDivide, &QPushButton::clicked, &myCalculator, &Calculator::setOperatorDivide);
     QObject::connect(buttonModulo, &QPushButton::clicked, &myCalculator, &Calculator::setOperatorModulo);
+    QObject::connect(buttonPower, &QPushButton::clicked, &myCalculator, &Calculator::setOperatorPower);
 
     // Connect the buttons to update the display
     auto updateDisplayLambda = [&]() { updateDisplay(*inputDisplay, myCalculator); };
@@ -89,6 +92,7 @@ int main(int argc, char *argv[]) {
     QObject::connect(buttonMultiply, &QPushButton::clicked, updateDisplayLambda);
     QObject::connect(buttonDivide, &QPushButton::clicked, updateDisplayLambda);
     QObject::connect(buttonModulo, &QPushButton::clicked, updateDisplayLambda);
+    QObject::connect(buttonPower, &QPushButton::clicked, updateDisplayLambda);
 
     // Handle the equal button
     QObject::connect(buttonCalculate, &QPushButton::clicked, [&]() {
