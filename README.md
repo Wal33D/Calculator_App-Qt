@@ -38,6 +38,12 @@ qmake tests.pro
 make
 make check    # or run ./calculator_test manually
 ```
+If the system does not provide a display server, set `QT_QPA_PLATFORM=offscreen`
+when running the tests:
+
+```bash
+QT_QPA_PLATFORM=offscreen make check
+```
 ## License
 
 This project is licensed under the [MIT License](LICENSE).
