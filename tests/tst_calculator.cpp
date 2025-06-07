@@ -10,6 +10,7 @@ class CalculatorTest : public QObject {
     void division();
     void divisionByZero();
     void clearAfterError();
+    void modulo();
     void decimalAddition();
     void additionWithNegativeOperand();
     void sequentialOperations();
@@ -53,6 +54,14 @@ void CalculatorTest::divisionByZero() {
     calc.setSecondOperand(0);
     calc.setOperator('/');
     QVERIFY_EXCEPTION_THROWN(calc.calculateResult(), std::logic_error);
+}
+
+void CalculatorTest::modulo() {
+    Calculator calc;
+    calc.setFirstOperand(20);
+    calc.setSecondOperand(3);
+    calc.setOperator('%');
+    QCOMPARE(calc.calculateResult(), 2.0);
 }
 
 void CalculatorTest::clearAfterError() {

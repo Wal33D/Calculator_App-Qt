@@ -8,6 +8,7 @@ A simple calculator application built with **C++** and **Qt Widgets**. It provid
 - Decimal point input
 - Clear and equals buttons
 - Error handling for invalid operations such as division by zero
+- Modulo operator (`%`)
 
 ## Requirements
 
